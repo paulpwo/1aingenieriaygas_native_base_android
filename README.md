@@ -4,7 +4,7 @@
 
 Este proyecto se encuentra solo como ejemplo y base de la estructura real iniciada para mejorar el performance, pasando de Flutter a Kotlin como mejor alternativa debido a problemas relacionados con servicios en Background y mejor rendimiento de la app en dispositivos de caracteristicas de gama baja.
 
-# Caturas
+# Capturas
 <p align="center">
 <img src="https://i.imgur.com/Ki8jN4Z.png" title="" height="400"/>
   <img src="https://i.imgur.com/gql0tVw.png" title="" height="400"/>

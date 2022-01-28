@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.settings.SettingsActivity">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <Button
+        android:id="@+id/btnResetDB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Resetear base de Datos interna"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@android:color/holo_red_light"/>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ESTA FUNCIÓN ELIMINA SIN POSIBILIDAD DE RECUPERACIÓN, TODOS LOS SERVICIOS QUE SE ENCUENTREN ALMACENADOS EN ESTE DISPOSITIVO. ESTA FUNCIÓN NO AFECTA LOS REGISTROS QUE YA ESTÉN EN EL SERVIDOR, SOLO LOS ELEMENTOS SINCRONIZADOS Y SIN SINCRONIZAR DE FORMA LOCAL. NO USE SI NO ESTÁ SEGURO DE LO QUE QUIERE HACER."
+        android:textColor="#B10808"
+        app:layout_constraintBottom_toTopOf="@+id/btnResetDB"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.os.Build
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,20 +12,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import androidx.recyclerview.widget.RecyclerView
+import com.pwol.flutter_app_1agas2.R
 import com.pwol.flutter_app_1agas2.database.departaments.DepartamentsViewModel
 import com.pwol.flutter_app_1agas2.database.departaments.MunicipalitiesRepository
 import com.pwol.flutter_app_1agas2.database.departaments.MunicipalitiesViewModel
 import com.pwol.flutter_app_1agas2.database.services.Service
-import com.pwol.flutter_app_1agas2.database.services.FaqsViewModel
 import com.pwol.flutter_app_1agas2.database.services.ServicesViewModel
 import com.pwol.flutter_app_1agas2.databinding.FragmentHomeBinding
 
+const val FLOWER_ID = "flower id"
 
 class HomeFragment : Fragment() {
 
+
+    private lateinit var recyclerView: RecyclerView
 
     private lateinit var homeViewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null
@@ -37,6 +42,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private var textView: TextView? = null
     private val TAG = "HomeFragment"
+    private lateinit var GROUP: String
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -44,6 +50,9 @@ class HomeFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         val me = this
+
+
+
         servicesViewModel = ViewModelProvider(this).get(ServicesViewModel::class.java)
 
 
@@ -51,6 +60,22 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+
+
+        val prefs = context?.getSharedPreferences("pref", Context.MODE_PRIVATE)
+        GROUP = prefs?.getString("group", "").toString()
+
+        recyclerView = root.findViewById(R.id.recycler_view)
+        val serviceViewModel = ViewModelProvider(this).get(ServicesViewModel::class.java)
+        serviceViewModel.services.observe(viewLifecycleOwner) {
+            val adapter = MyAdapter(it)
+            recyclerView.adapter = adapter
+            if(it.size > 0){
+                textView?.visibility = View.GONE
+            }
+        }
+
 
         textView = binding.textHome
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
@@ -71,10 +96,10 @@ class HomeFragment : Fragment() {
         // END ONLY FOR TESTING
 
 
-        addObserver()
+        //addObserver()
 
         //addService()
-        //addService()
+
 
         val receiver: BroadcastReceiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context?, intent: Intent?) {
@@ -90,8 +115,13 @@ class HomeFragment : Fragment() {
         val lbm = LocalBroadcastManager.getInstance(binding.root.context)
         lbm.registerReceiver(receiver, IntentFilter("refresh_database"))
 
+
+
         return root
     }
+
+
+
     fun addObserver() {
 
         val observer = Observer<List<Service>> { services ->
@@ -107,7 +137,49 @@ class HomeFragment : Fragment() {
     }
 
     private fun addService() {
-        servicesViewModel.saveService(Service("service demo"))
+        servicesViewModel.saveService(
+            Service("1234213412412",
+                "NOMBRE",
+                "APELLIDO",
+                "Carrera 79A 334-2",
+                "COMERCIAL",
+                "PERIODICA",
+                false,
+                0,
+                "",
+                "",
+                "",
+                0,
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                2,
+                "$GROUP",
+                false,
+                "",
+                "",
+                "",
+                "Pendiente",
+                "",
+                "",
+                "BOGOTÁ, D.C.",
+                "BOGOTÁ, D.C.",
+                "",
+                ""
+            ))
     }
 
     override fun onDestroyView() {

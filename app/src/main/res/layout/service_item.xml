@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="5dp"
+    android:elevation="8dp"
+    app:contentPadding="5dp"
+    app:cardBackgroundColor="#F2B2D2ED"
+    android:layout_width="match_parent"
+    app:cardCornerRadius="30dp"
+    android:layout_height="180dp"
+    android:id="@+id/service_item_inner"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@android:color/transparent">
+
+        <ImageView
+            android:id="@+id/priority_image"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_margin="8dp"
+            android:contentDescription="Imagen"
+            android:scaleType="centerInside"
+            app:layout_constraintEnd_toStartOf="@+id/contract_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/file_clip"
+            android:background="@android:color/transparent"/>
+
+        <ImageView
+            android:id="@+id/type_image"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_margin="8dp"
+            android:contentDescription="Imagen"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/comerciovector"
+            android:background="@android:color/transparent"/>
+
+        <TextView
+            android:id="@+id/service_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/contract_text"
+            android:layout_width="262dp"
+            android:layout_height="26dp"
+            android:layout_margin="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:text="Contrato: 1234213421"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintEnd_toStartOf="@+id/type_image"
+            app:layout_constraintStart_toEndOf="@+id/priority_image"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/blue1a"
+            android:background="@android:color/transparent"/>
+
+        <TextView
+            android:id="@+id/ClienttextView"
+            android:layout_width="262dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:background="@android:color/transparent"
+            android:text="TextView"
+            android:textColor="#4C4C4C"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/type_image"
+            app:layout_constraintHorizontal_bias="0.653"
+            app:layout_constraintStart_toEndOf="@+id/priority_image"
+            app:layout_constraintTop_toBottomOf="@+id/contract_text" />
+
+
+        <LinearLayout
+            android:layout_width="360dp"
+            android:layout_height="109dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="4dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ClienttextView"
+            app:layout_constraintVertical_bias="0.627"
+            android:background="@android:color/transparent">
+
+            <TextView
+                android:id="@+id/DepartMunitextView"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="TextView"
+                android:background="@android:color/transparent"/>
+
+            <TextView
+                android:id="@+id/BookingTextView"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="TextView"
+                android:textStyle="bold"
+                android:background="@android:color/transparent"/>
+
+            <TextView
+                android:id="@+id/StateTextView"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:fontWeight="500"
+                android:text="TextView"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteY="134dp"
+                android:background="@android:color/transparent"/>
+
+            <TextView
+                android:id="@+id/CurseTextView"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:fontWeight="500"
+                android:text="TextView"
+                android:textStyle="bold"
+                android:background="@android:color/transparent"/>
+
+            <TextView
+                android:id="@+id/DirectionTextView"
+                android:layout_width="0dp"
+                android:layout_height="16dp"
+                android:text="TextView"
+                android:fontWeight="500"
+                android:background="@android:color/transparent"/>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

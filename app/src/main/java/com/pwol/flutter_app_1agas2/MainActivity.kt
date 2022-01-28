@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity()  {
         binding.appBarMain.fab.setOnClickListener { view ->
             //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show()
-            servicesViewModel.saveService(Service("service demo"))
+            addService(servicesViewModel)
         }
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
@@ -138,7 +138,51 @@ class MainActivity : AppCompatActivity()  {
 
     }
 
-
+    private fun addService(servicesViewModel: ServicesViewModel) {
+        servicesViewModel.saveService(
+            Service("1234213412412",
+                "NOMBRE",
+                "APELLIDO",
+                "Carrera 79A 334-2",
+                "COMERCIAL",
+                "PERIODICA",
+                false,
+                0,
+                "",
+                "",
+                "",
+                0,
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                2,
+                "GRUPO DEMO",
+                false,
+                "",
+                "",
+                "",
+                "Pendiente",
+                "",
+                "",
+                "BOGOTÁ, D.C.",
+                "BOGOTÁ, D.C.",
+                "",
+                ""
+            ))
+    }
 
     inline fun <reified T: Activity> Activity.myStartActivityForResult(requestCode: Int) {
         val intent = Intent(this, T::class.java)

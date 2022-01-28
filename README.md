@@ -6,8 +6,11 @@ Este proyecto se encuentra solo como ejemplo y base de la estructura real inicia
 
 # Capturas
 <p align="center">
-<img src="https://i.imgur.com/Ki8jN4Z.png" title="" height="400"/>
-  <img src="https://i.imgur.com/gql0tVw.png" title="" height="400"/>
+    <img src="https://i.imgur.com/Ki8jN4Z.png" title="" height="400"/>
+    <img src="https://i.imgur.com/gql0tVw.png" title="" height="400"/>
+    <img src="https://i.imgur.com/uG8XBqM.png" title="" height="400"/>
+    <img src="https://i.imgur.com/sOM786d.pngg" title="" height="400"/>
+
 </p>
 
 # Requerimientos

@@ -18,7 +18,7 @@ Este proyecto se encuentra solo como ejemplo y base de la estructura real inicia
 
 # Requerimientos
 - Wordpress
-- Plugin 1A Gas Backend
+- 1A Gas Backend Plugin (Private Development)
 - Plugin de JWT Autenticación (https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/)
 - Android Studio ARCTIC
 

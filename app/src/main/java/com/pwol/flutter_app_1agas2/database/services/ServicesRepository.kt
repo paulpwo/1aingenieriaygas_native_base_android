@@ -1,12 +1,13 @@
-package com.pwol.flutter_app_1agas2.database
+package com.pwol.flutter_app_1agas2.database.services
 
 import android.app.Application
 import android.os.AsyncTask
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.pwol.flutter_app_1agas2.database.GlobalDatabase
 
 class ServicesRepository(application: Application) {
-    private val serviceDao: ServiceDao? = ServicesDatabase.getInstance(application)?.serviceDao()
+    private val serviceDao: ServiceDao? = GlobalDatabase.getInstance(application)?.serviceDao()
 
     fun insert(service: Service) {
         if (serviceDao != null) InsertAsyncTask(serviceDao).execute(service)

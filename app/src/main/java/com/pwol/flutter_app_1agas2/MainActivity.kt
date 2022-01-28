@@ -2,7 +2,6 @@ package com.pwol.flutter_app_1agas2
 
 import android.app.Activity
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.provider.AlarmClock
 import android.view.Menu
@@ -20,10 +19,10 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.snackbar.Snackbar
 import com.pwol.flutter_app_1agas2.data.LoginDataSource
-import com.pwol.flutter_app_1agas2.database.Service
-import com.pwol.flutter_app_1agas2.database.ServicesViewModel
+import com.pwol.flutter_app_1agas2.database.services.Service
+import com.pwol.flutter_app_1agas2.database.services.FaqsViewModel
+import com.pwol.flutter_app_1agas2.database.services.ServicesViewModel
 import com.pwol.flutter_app_1agas2.databinding.ActivityMainBinding
 import com.pwol.flutter_app_1agas2.protocols.NavigationInterface
 import com.pwol.flutter_app_1agas2.ui.login.LoginActivity
@@ -52,7 +51,7 @@ class MainActivity : AppCompatActivity()  {
         binding.appBarMain.fab.setOnClickListener { view ->
             //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show()
-            servicesViewModel.saveContact(Service("service demo"))
+            servicesViewModel.saveService(Service("service demo"))
         }
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView

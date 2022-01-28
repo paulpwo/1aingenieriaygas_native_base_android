@@ -15,8 +15,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import com.pwol.flutter_app_1agas2.database.Service
-import com.pwol.flutter_app_1agas2.database.ServicesViewModel
+import com.pwol.flutter_app_1agas2.database.departaments.DepartamentsViewModel
+import com.pwol.flutter_app_1agas2.database.services.Service
+import com.pwol.flutter_app_1agas2.database.services.FaqsViewModel
+import com.pwol.flutter_app_1agas2.database.services.ServicesViewModel
 import com.pwol.flutter_app_1agas2.databinding.FragmentHomeBinding
 
 
@@ -26,6 +28,8 @@ class HomeFragment : Fragment() {
     private lateinit var homeViewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null
     private lateinit var servicesViewModel: ServicesViewModel
+    private lateinit var departamentsViewModel: DepartamentsViewModel
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -39,6 +43,7 @@ class HomeFragment : Fragment() {
     ): View? {
         val me = this
         servicesViewModel = ViewModelProvider(this).get(ServicesViewModel::class.java)
+        departamentsViewModel = ViewModelProvider(this).get(DepartamentsViewModel::class.java)
 
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
@@ -52,10 +57,11 @@ class HomeFragment : Fragment() {
         })
 
 
+        departamentsViewModel.departaments.observe(viewLifecycleOwner, Observer {
+            Log.d(TAG, "Departamentos: ${it.size}")
+        })
 
         addObserver()
-
-
 
         //addService()
         //addService()
@@ -70,12 +76,6 @@ class HomeFragment : Fragment() {
                 if (intent != null) {
                     val str = intent.getStringExtra("refresh_database")
                     if(str == "refresh_database"){
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                            fragmentManager?.beginTransaction()?.detach(me)?.commitNow();
-                            fragmentManager?.beginTransaction()?.attach(me)?.commitNow();
-                        } else {
-                            fragmentManager?.beginTransaction()?.detach(me)?.attach(me)?.commit();
-                        }
                         addObserver()
                     }
                 }
@@ -102,7 +102,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun addService() {
-        servicesViewModel.saveContact(Service("service demo"))
+        servicesViewModel.saveService(Service("service demo"))
     }
 
     override fun onDestroyView() {

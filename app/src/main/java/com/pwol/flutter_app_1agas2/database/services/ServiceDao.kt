@@ -1,4 +1,4 @@
-package com.pwol.flutter_app_1agas2.database
+package com.pwol.flutter_app_1agas2.database.services
 
 import androidx.lifecycle.LiveData
 import androidx.room.*

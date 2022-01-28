@@ -6,9 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
-import com.pwol.flutter_app_1agas2.MainActivity
 import com.pwol.flutter_app_1agas2.R
-import com.pwol.flutter_app_1agas2.database.ServicesDatabase
 import com.pwol.flutter_app_1agas2.databinding.ActivityMainBinding
 import java.io.File
 

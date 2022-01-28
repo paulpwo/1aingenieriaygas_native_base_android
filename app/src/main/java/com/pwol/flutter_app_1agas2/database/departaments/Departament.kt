@@ -6,8 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = Departament.TABLE_NAME)
 data class Departament(
-    //@ColumnInfo(name = "phone_number") @NotNull val phoneNumber: String,
-    @ColumnInfo(name = "id_departamento") val id_departamento: Int? = null,
+    @ColumnInfo(name = "id_departamento") val id_departamento: Long? = null,
     @ColumnInfo(name = "departament") val departament: String? = null,
 ) {
     companion object {

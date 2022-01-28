@@ -16,6 +16,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.pwol.flutter_app_1agas2.database.departaments.DepartamentsViewModel
+import com.pwol.flutter_app_1agas2.database.departaments.MunicipalitiesRepository
+import com.pwol.flutter_app_1agas2.database.departaments.MunicipalitiesViewModel
 import com.pwol.flutter_app_1agas2.database.services.Service
 import com.pwol.flutter_app_1agas2.database.services.FaqsViewModel
 import com.pwol.flutter_app_1agas2.database.services.ServicesViewModel
@@ -43,7 +45,7 @@ class HomeFragment : Fragment() {
     ): View? {
         val me = this
         servicesViewModel = ViewModelProvider(this).get(ServicesViewModel::class.java)
-        departamentsViewModel = ViewModelProvider(this).get(DepartamentsViewModel::class.java)
+
 
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
@@ -56,18 +58,21 @@ class HomeFragment : Fragment() {
             textView?.text = "¡Parece que todo marcha bien! Ya puede agregar su primer servicio. En la zona baja y a la derecha de esta vista encontrara un Botón con el símbolo + Toque este y comenzara a crear su primera revisión. Gracias por Usar 1A Gas APP"
         })
 
-
-        departamentsViewModel.departaments.observe(viewLifecycleOwner, Observer {
-            Log.d(TAG, "Departamentos: ${it.size}")
+        // TODO ONLY FOR TESTING
+        val municipalitiesViewModel = ViewModelProvider(this).get(MunicipalitiesViewModel::class.java)
+        municipalitiesViewModel.municipalities.observe(viewLifecycleOwner, Observer {
+            Log.d(TAG, "Municipalidades: ${it.size}")
         })
+
+        val repository = MunicipalitiesRepository(application = requireNotNull(this.activity).application)
+        repository.getMunicipalitiesByDepartamentId(25).observe(viewLifecycleOwner, Observer {
+            Log.d(TAG, "Municipalidades: ${it.toString()}")
+        })
+        // END ONLY FOR TESTING
+
 
         addObserver()
 
-        //addService()
-        //addService()
-        //addService()
-        //addService()
-        //addService()
         //addService()
         //addService()
 

@@ -17,7 +17,8 @@ class MunicipalitiesRepository(application: Application) {
         return municipalityDao?.getMunicipality(id) ?: MutableLiveData<Municipality>()
     }
 
-    fun getMunicipalitiesByDepartamentId(id_departamento: Int): LiveData<List<Municipality>> {
+    fun getMunicipalitiesByDepartamentId(id_departamento: Long): LiveData<List<Municipality>> {
         return municipalityDao?.getMunicipalitiesByDepartamentId(id_departamento) ?: MutableLiveData<List<Municipality>>()
     }
+
 }

@@ -11,4 +11,9 @@ class DepartamentsRepository(application: Application) {
     fun getDepartaments(): LiveData<List<Departament>> {
         return departamentDao?.getOrderedDepartaments() ?: MutableLiveData<List<Departament>>()
     }
+
+    fun findDepartamentByName(departament: String): LiveData<Departament> {
+        return departamentDao?.findDepartamentByName(departament) ?: MutableLiveData<Departament>()
+    }
+
 }

@@ -10,6 +10,17 @@
         <entry key="app/src/main/res/drawable/img_circle.xml" value="0.1755" />
         <entry key="app/src/main/res/drawable/side_nav_bar.xml" value="0.2537037037037037" />
         <entry key="app/src/main/res/drawable/splashscreen.xml" value="0.2537037037037037" />
+        <entry key="app/src/main/res/drawable/circle_active.xml" value="0.171" />
+        <entry key="app/src/main/res/drawable/circle_res.xml" value="0.171" />
+        <entry key="app/src/main/res/drawable/file_present.xml" value="0.1755" />
+        <entry key="app/src/main/res/drawable/file_presente_image.xml" value="0.1755" />
+        <entry key="app/src/main/res/drawable/ic_add_white.xml" value="0.171" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.3921875" />
+        <entry key="app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.171" />
+        <entry key="app/src/main/res/drawable/img_circle.xml" value="0.1755" />
+        <entry key="app/src/main/res/drawable/side_nav_bar.xml" value="0.2537037037037037" />
+        <entry key="app/src/main/res/drawable/splashscreen.xml" value="0.2537037037037037" />
+        <entry key="app/src/main/res/drawable/toogle_switch.xml" value="0.171" />
         <entry key="app/src/main/res/layout-w1240dp/activity_login.xml" value="0.22265625" />
         <entry key="app/src/main/res/layout-w936dp/activity_login.xml" value="0.19467213114754098" />
         <entry key="app/src/main/res/layout/activity_fullscreen_splash.xml" value="0.271286231884058" />
@@ -29,6 +40,33 @@
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.37025641025641026" />
         <entry key="app/src/main/res/menu/grupos_operativos.xml" value="0.25677083333333334" />
         <entry key="app/src/main/res/menu/main.xml" value="0.25555555555555554" />
+        <entry key="app/src/main/res/layout/activity_main_steper.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_settings.xml" value="0.1585144927536232" />
+        <entry key="app/src/main/res/layout/activity_settingsactivity.xml" value="0.1585144927536232" />
+        <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.1828774062816616" />
+        <entry key="app/src/main/res/layout/bg_circle.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/content_main.xml" value="0.22418478260869565" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25677083333333334" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.24270833333333333" />
+        <entry key="app/src/main/res/layout/fragment_main_activity_steper.xml" value="0.11018237082066869" />
+        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.30223846435546875" />
+        <entry key="app/src/main/res/layout/header_item.xml" value="0.24365942028985507" />
+        <entry key="app/src/main/res/layout/list_item.xml" value="0.2028985507246377" />
+        <entry key="app/src/main/res/layout/list_item_groups.xml" value="0.25769927536231885" />
+        <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.271286231884058" />
+        <entry key="app/src/main/res/layout/service_item.xml" value="0.54" />
+        <entry key="app/src/main/res/layout/step1_fragment.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/step2_fragment.xml" value="0.2687011537030145" />
+        <entry key="app/src/main/res/layout/step3_fragment.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/step4_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/step5_fragment.xml" value="0.13044579533941236" />
+        <entry key="app/src/main/res/layout/step6_fragment.xml" value="0.13728470111448834" />
+        <entry key="app/src/main/res/layout/stepper_progress.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/tab_stepper_without_navigation_components_activity.xml" value="0.9193548387096774" />
+        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.37025641025641026" />
+        <entry key="app/src/main/res/menu/grupos_operativos.xml" value="0.25677083333333334" />
+        <entry key="app/src/main/res/menu/main.xml" value="0.25555555555555554" />
+        <entry key="app/src/main/res/menu/menu_stepper.xml" value="0.13697916666666668" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3921875" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2537037037037037" />
         <entry key="app/src/main/res/xml/root_preferences.xml" value="0.3600144317184669" />
@@ -40,5 +78,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.1" />
+      </ProjectState>
+    </option>
   </component>
 </project>

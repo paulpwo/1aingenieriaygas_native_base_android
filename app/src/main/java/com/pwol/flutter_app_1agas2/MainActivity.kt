@@ -21,10 +21,12 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.pwol.flutter_app_1agas2.data.LoginDataSource
 import com.pwol.flutter_app_1agas2.database.services.Service
-import com.pwol.flutter_app_1agas2.database.services.FaqsViewModel
+
 import com.pwol.flutter_app_1agas2.database.services.ServicesViewModel
 import com.pwol.flutter_app_1agas2.databinding.ActivityMainBinding
 import com.pwol.flutter_app_1agas2.protocols.NavigationInterface
+import com.pwol.flutter_app_1agas2.stepper.MainActivitySteper
+
 import com.pwol.flutter_app_1agas2.ui.login.LoginActivity
 import com.pwol.flutter_app_1agas2.ui.settings.SettingsActivity
 
@@ -51,7 +53,14 @@ class MainActivity : AppCompatActivity()  {
         binding.appBarMain.fab.setOnClickListener { view ->
             //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
             //        .setAction("Action", null).show()
+
             addService(servicesViewModel)
+
+            //addService(servicesViewModel)
+            //MainActivitySteper
+            myStartActivityForResult<MainActivitySteper>(2)
+
+
         }
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
@@ -93,6 +102,7 @@ class MainActivity : AppCompatActivity()  {
                     loginRepository.logout(context = baseContext)
                     val intentLogin = Intent(this, LoginActivity::class.java).apply {
                         putExtra(AlarmClock.EXTRA_MESSAGE, "message")
+
                     }
                     startActivity(intentLogin)
                     finish()

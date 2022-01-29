@@ -16,6 +16,7 @@ Este proyecto se encuentra solo como ejemplo y base de la estructura real inicia
     <img src="https://i.imgur.com/8ityP5S.png" title="" height="350"/>
 </p>
  
+
 # Requerimientos
 - Wordpress
 - 1A Gas Backend Plugin (Private Development)

@@ -13,5 +13,6 @@ interface MunicipalityDao {
     fun getMunicipality(id: Int): LiveData<Municipality>
 
     @Query("SELECT * FROM " + Municipality.TABLE_NAME + " WHERE departamento_id = :departamento_id")
-    fun getMunicipalitiesByDepartamentId(departamento_id: Int): LiveData<List<Municipality>>
+    fun getMunicipalitiesByDepartamentId(departamento_id: Long): LiveData<List<Municipality>>
+
 }

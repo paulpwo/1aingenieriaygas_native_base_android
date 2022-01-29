@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -18,6 +19,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.RecyclerView
 import com.pwol.flutter_app_1agas2.R
+
 import com.pwol.flutter_app_1agas2.database.departaments.DepartamentsViewModel
 import com.pwol.flutter_app_1agas2.database.departaments.MunicipalitiesRepository
 import com.pwol.flutter_app_1agas2.database.departaments.MunicipalitiesViewModel
@@ -84,6 +86,12 @@ class HomeFragment : Fragment() {
         })
 
         // TODO ONLY FOR TESTING
+
+        val repositoryDepartaments = ViewModelProvider(this).get(DepartamentsViewModel::class.java)
+        repositoryDepartaments.departaments.observe(viewLifecycleOwner, Observer {
+            Log.d(TAG, "Depataments: ${it.toString()}")
+        })
+
         val municipalitiesViewModel = ViewModelProvider(this).get(MunicipalitiesViewModel::class.java)
         municipalitiesViewModel.municipalities.observe(viewLifecycleOwner, Observer {
             Log.d(TAG, "Municipalidades: ${it.size}")

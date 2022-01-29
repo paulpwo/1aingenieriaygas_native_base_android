@@ -19,6 +19,14 @@
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustResize">
         <activity
+            android:name=".stepper.MainActivitySteper"
+            android:exported="false"
+            android:label="@string/title_activity_main_steper">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+        </activity>
+        <activity
             android:name=".ui.settings.SettingsActivity"
             android:exported="false"
             android:label="Settings">

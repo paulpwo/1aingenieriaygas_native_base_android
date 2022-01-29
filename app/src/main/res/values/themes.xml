@@ -1,4 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="color">#F1F1F1</item>
     </style>
@@ -32,6 +33,7 @@
     <style name="SplashTheme" parent="Theme.1AGas.NoActionBar">
         <item name="android:windowBackground">@drawable/splashscreen</item>
     </style>
+
     <style name="Theme.1AGas.Fullscreen" parent="Theme.1AGas">
         <item name="android:actionBarStyle">@style/Widget.Theme.1AGas.ActionBar.Fullscreen</item>
         <item name="android:windowActionBarOverlay">true</item>

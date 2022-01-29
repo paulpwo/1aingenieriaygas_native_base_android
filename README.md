@@ -6,16 +6,16 @@ Este proyecto se encuentra solo como ejemplo y base de la estructura real inicia
 
 # Capturas
 <p align="center">
-    <img src="https://i.imgur.com/Ki8jN4Z.png" title="" height="350"/>
-    <img src="https://i.imgur.com/gql0tVw.png" title="" height="350"/>
-    <img src="https://i.imgur.com/uG8XBqM.png" title="" height="350"/>
-    <img src="https://i.imgur.com/sOM786d.png" title="" height="350"/>
-    <img src="https://i.imgur.com/J7uY888.png" title="" height="350"/>
-    <img src="https://i.imgur.com/JkYsenO.png" title="" height="350"/>
-    <img src="https://i.imgur.com/ZGzpWsZ.png" title="" height="350"/>
-    <img src="https://i.imgur.com/8ityP5S.png" title="" height="350"/>
-    <img src="https://i.imgur.com/TuDycrB.png" title="" height="350"/>
-    <img src="https://i.imgur.com/Dls9uKx.png" title="" height="350"/>
+    <img src="https://i.imgur.com/Ki8jN4Z.png" title="" height="300"/>
+    <img src="https://i.imgur.com/gql0tVw.png" title="" height="300"/>
+    <img src="https://i.imgur.com/uG8XBqM.png" title="" height="300"/>
+    <img src="https://i.imgur.com/sOM786d.png" title="" height="300"/>
+    <img src="https://i.imgur.com/J7uY888.png" title="" height="300"/>
+    <img src="https://i.imgur.com/JkYsenO.png" title="" height="300"/>
+    <img src="https://i.imgur.com/ZGzpWsZ.png" title="" height="300"/>
+    <img src="https://i.imgur.com/8ityP5S.png" title="" height="300"/>
+    <img src="https://i.imgur.com/TuDycrB.png" title="" height="300"/>
+    <img src="https://i.imgur.com/Dls9uKx.png" title="" height="300"/>
 </p>
  
 

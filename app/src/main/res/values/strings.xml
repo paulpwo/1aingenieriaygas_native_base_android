@@ -61,6 +61,8 @@
     <string name="inductrial">Inductrial</string>
     <string name="nueva">NUEVA</string>
     <string name="periodica">PERIODICA</string>
+    <string name="agendamiento">AGENDAMIENTO</string>
+    <string name="ingrese_fecha_y_hora_aqu">Ingrese fecha y hora aquí</string>
 
 
 </resources>

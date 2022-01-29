@@ -14,6 +14,8 @@ Este proyecto se encuentra solo como ejemplo y base de la estructura real inicia
     <img src="https://i.imgur.com/JkYsenO.png" title="" height="350"/>
     <img src="https://i.imgur.com/ZGzpWsZ.png" title="" height="350"/>
     <img src="https://i.imgur.com/8ityP5S.png" title="" height="350"/>
+    <img src="https://i.imgur.com/TuDycrB.png" title="" height="350"/>
+    <img src="https://i.imgur.com/Dls9uKx.png" title="" height="350"/>
 </p>
  
 

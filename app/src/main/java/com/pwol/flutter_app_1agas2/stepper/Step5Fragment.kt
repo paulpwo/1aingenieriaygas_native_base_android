@@ -1,11 +1,20 @@
 package com.pwol.flutter_app_1agas2.stepper
 
+import android.app.DatePickerDialog
+import android.app.DatePickerDialog.OnDateSetListener
+import android.app.TimePickerDialog
+import android.app.TimePickerDialog.OnTimeSetListener
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.TextView
+import androidx.fragment.app.Fragment
 import com.pwol.flutter_app_1agas2.R
+import java.util.*
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +30,18 @@ class Step5Fragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private lateinit var bookingDateTime: EditText
+
+
+
+    private val TAG = "Sample"
+
+    private val TAG_DATETIME_FRAGMENT = "TAG_DATETIME_FRAGMENT"
+
+    private val STATE_TEXTVIEW = "STATE_TEXTVIEW"
+    private val textView: TextView? = null
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,9 +57,48 @@ class Step5Fragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val root = inflater.inflate(R.layout.step5_fragment, container, false)
+        bookingDateTime = root.findViewById(R.id.bookingDateTime) as EditText
+
+
+        bookingDateTime.setOnClickListener {
+            //showDatePickerDialog(root.context)
+            var value = Date()
+            val cal: Calendar = Calendar.getInstance()
+            cal.setTime(value)
+
+            DatePickerDialog(
+                root.context,
+                OnDateSetListener { view, y, m, d ->
+                    cal.set(Calendar.YEAR, y)
+                    cal.set(Calendar.MONTH, m)
+                    cal.set(Calendar.DAY_OF_MONTH, d)
+                    val currentYear: Int = cal.get(Calendar.YEAR)
+                    val currentMonth: Int = cal.get(Calendar.MONTH) + 1
+                    val currentDay: Int = cal.get(Calendar.DAY_OF_MONTH)
+
+                    val timePicker =  TimePickerDialog(
+                        this.context,
+                        { view, h, min ->
+                            cal.set(Calendar.HOUR_OF_DAY, h)
+                            cal.set(Calendar.MINUTE, min)
+                            value = cal.getTime()
+                            bookingDateTime.setText("${currentDay}/${currentMonth}/${currentYear} $h:$min")
+                        },
+                        cal.get(Calendar.HOUR_OF_DAY),
+                        cal.get(Calendar.MINUTE), false
+                    )
+                    timePicker.show()
+
+                }, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH)
+            ).show()
+
+        }
+
 
         return root
     }
+
 
     companion object {
         /**
@@ -60,3 +120,5 @@ class Step5Fragment : Fragment() {
             }
     }
 }
+
+

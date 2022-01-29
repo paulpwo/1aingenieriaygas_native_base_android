@@ -26,10 +26,29 @@
                 android:id="@+id/titleElement"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="AGENDAMIENTO"
+                android:text="@string/agendamiento"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="#818181"
                 android:textStyle="bold" />
         </LinearLayout>
+
+        <EditText
+            android:id="@+id/bookingDateTime"
+            android:layout_width="284dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="68dp"
+            android:clickable="true"
+            android:ems="10"
+            android:focusable="false"
+            android:gravity="center"
+            android:hint="@string/ingrese_fecha_y_hora_aqu"
+            android:importantForAutofill="no"
+            android:inputType="datetime"
+            android:textColorHint="#78909C"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

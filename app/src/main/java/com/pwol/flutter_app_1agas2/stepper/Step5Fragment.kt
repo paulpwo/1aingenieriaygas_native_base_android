@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.app.TimePickerDialog
 import android.app.TimePickerDialog.OnTimeSetListener
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -32,16 +33,9 @@ class Step5Fragment : Fragment() {
     private var param2: String? = null
     private lateinit var bookingDateTime: EditText
 
-
-
-    private val TAG = "Sample"
-
-    private val TAG_DATETIME_FRAGMENT = "TAG_DATETIME_FRAGMENT"
-
-    private val STATE_TEXTVIEW = "STATE_TEXTVIEW"
-    private val textView: TextView? = null
-
-
+    val prefs by lazy {
+        requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,9 +51,23 @@ class Step5Fragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val root = inflater.inflate(R.layout.step5_fragment, container, false)
+
+        loadData(root)
+        setOnChangeTexts(root)
+
+
+
+        return root
+    }
+
+    fun loadData(root: View) {
         bookingDateTime = root.findViewById(R.id.bookingDateTime) as EditText
+        prefs.getString("bookingDateTime", "")?.let {
+            bookingDateTime.setText(it)
+        }
+    }
 
-
+    fun setOnChangeTexts(root: View) {
         bookingDateTime.setOnClickListener {
             //showDatePickerDialog(root.context)
             var value = Date()
@@ -83,6 +91,7 @@ class Step5Fragment : Fragment() {
                             cal.set(Calendar.MINUTE, min)
                             value = cal.getTime()
                             bookingDateTime.setText("${currentDay}/${currentMonth}/${currentYear} $h:$min")
+                            prefs.edit().putString("bookingDateTime", "${currentDay}/${currentMonth}/${currentYear} $h:$min").apply()
                         },
                         cal.get(Calendar.HOUR_OF_DAY),
                         cal.get(Calendar.MINUTE), false
@@ -95,11 +104,7 @@ class Step5Fragment : Fragment() {
 
         }
 
-
-        return root
     }
-
-
     companion object {
         /**
          * Use this factory method to create a new instance of

@@ -31,5 +31,151 @@
                 android:textColor="#818181"
                 android:textStyle="bold" />
         </LinearLayout>
+
+        <TableLayout
+            android:layout_width="375dp"
+            android:layout_height="290dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="69dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="CONTRATO"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/contrato"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="TextView" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="69dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="NOMBRE"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="TextView" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="69dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="APELLIDOS"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/lastname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="TextView" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="69dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="DIRECCIÓN"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/direction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="TextView" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="69dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TIPO"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/type_client"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="TextView" />
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="69dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ESTADO"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/type_revision"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="TextView" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="69dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="AGENDAMIENTO"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/booking"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="TextView" />
+            </TableRow>
+
+        </TableLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

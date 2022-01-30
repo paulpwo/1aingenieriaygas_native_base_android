@@ -40,7 +40,7 @@
         <entry key="app/src/main/res/layout/step3_fragment.xml" value="0.33" />
         <entry key="app/src/main/res/layout/step4_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/step5_fragment.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/step6_fragment.xml" value="0.13728470111448834" />
+        <entry key="app/src/main/res/layout/step6_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/stepper_progress.xml" value="0.1" />
         <entry key="app/src/main/res/layout/tab_stepper_without_navigation_components_activity.xml" value="0.9193548387096774" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.37025641025641026" />

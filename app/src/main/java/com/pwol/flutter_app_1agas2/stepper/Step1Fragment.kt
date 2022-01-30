@@ -1,10 +1,16 @@
 package com.pwol.flutter_app_1agas2.stepper
 
+import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.pwol.flutter_app_1agas2.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -21,6 +27,15 @@ class Step1Fragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private val ARG_SECTION_NUMBER = "section_number"
+    private lateinit var textName: EditText
+    private lateinit var textLastName: EditText
+    private lateinit var textDirection: EditText
+
+    val prefs by lazy {
+        requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +49,32 @@ class Step1Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.step1_fragment, container, false)
+        val root = inflater.inflate(R.layout.step1_fragment, container, false)
+        loadData(root)
+        setOnChangeTexts()
+        return root
+    }
+
+    fun loadData(root: View) {
+        textName = root.findViewById(R.id.textName) as EditText
+        textLastName = root.findViewById(R.id.textLastName) as EditText
+       textDirection = root.findViewById(R.id.textDirection) as EditText
+
+        textName.setText(prefs.getString("name", ""))
+        textLastName.setText(prefs.getString("lastname", ""))
+        textDirection.setText(prefs.getString("direction", ""))
+    }
+
+    fun setOnChangeTexts(){
+        textName.doOnTextChanged { text, start, before, count ->
+            prefs.edit().putString("name", text.toString()).apply()
+        }
+        textLastName.doOnTextChanged { text, start, before, count ->
+            prefs.edit().putString("lastname", text.toString()).apply()
+        }
+        textDirection.doOnTextChanged { text, start, before, count ->
+            prefs.edit().putString("direction", text.toString()).apply()
+        }
     }
 
     companion object {

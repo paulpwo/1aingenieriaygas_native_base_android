@@ -1,12 +1,15 @@
 package com.pwol.flutter_app_1agas2.stepper
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.pwol.flutter_app_1agas2.R
 
 
@@ -24,7 +27,13 @@ class Step3Fragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private lateinit var btnResidecial: ImageButton
+    private lateinit var btnComercial: ImageButton
+    private lateinit var btnIndustrial: ImageButton
 
+    val prefs by lazy {
+        requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,14 +49,36 @@ class Step3Fragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val root = inflater.inflate(R.layout.step3_fragment, container, false)
+        loadData(root)
+        setOnChangeTexts()
+        return root
+    }
 
-        val btnResidecial = root.findViewById(R.id.btnResidecial) as ImageButton
+    fun loadData(root: View){
+        btnResidecial = root.findViewById(R.id.btnResidecial) as ImageButton
         btnResidecial.tag = "false"
-        val btnComercial = root.findViewById(R.id.btnComercial) as ImageButton
+        btnComercial = root.findViewById(R.id.btnComercial) as ImageButton
         btnComercial.tag = "false"
-        val btnIndustrial = root.findViewById(R.id.btnIndustrial) as ImageButton
+        btnIndustrial = root.findViewById(R.id.btnIndustrial) as ImageButton
         btnIndustrial.tag = "false"
 
+        prefs.getString("tipo_cliente", "")?.let {
+            if(it == "Residencial"){
+                btnResidecial.setBackgroundResource(R.drawable.circle_active)
+                btnResidecial.tag = "true"
+            }
+            if(it == "Comercial"){
+                btnComercial.setBackgroundResource(R.drawable.circle_active)
+                btnComercial.tag = "true"
+            }
+            if(it == "Industrial"){
+                btnIndustrial.setBackgroundResource(R.drawable.circle_active)
+                btnIndustrial.tag = "true"
+            }
+        }
+    }
+
+    fun setOnChangeTexts(){
 
         btnResidecial.setOnClickListener {
             if(btnResidecial.tag.toString() == "false") {
@@ -55,11 +86,12 @@ class Step3Fragment : Fragment() {
                 btnComercial.setBackgroundResource(R.drawable.circle)
                 btnIndustrial.setBackgroundResource(R.drawable.circle)
                 btnResidecial.tag = "true"
+                prefs.edit().putString("tipo_cliente", "Residencial").apply()
             } else {
                 btnResidecial.setBackgroundResource(R.drawable.circle)
                 btnResidecial.tag = "false"
+                prefs.edit().putString("tipo_cliente", "").apply()
             }
-
         }
         btnComercial.setOnClickListener {
             if(btnComercial.tag.toString() == "false") {
@@ -67,9 +99,11 @@ class Step3Fragment : Fragment() {
                 btnResidecial.setBackgroundResource(R.drawable.circle)
                 btnIndustrial.setBackgroundResource(R.drawable.circle)
                 btnComercial.tag = "true"
+                prefs.edit().putString("tipo_cliente", "Comercial").apply()
             } else {
                 btnComercial.setBackgroundResource(R.drawable.circle)
                 btnComercial.tag = "false"
+                prefs.edit().putString("tipo_cliente", "").apply()
             }
 
         }
@@ -79,17 +113,15 @@ class Step3Fragment : Fragment() {
                 btnResidecial.setBackgroundResource(R.drawable.circle)
                 btnComercial.setBackgroundResource(R.drawable.circle)
                 btnIndustrial.tag = "true"
+                prefs.edit().putString("tipo_cliente", "Industrial").apply()
             } else {
                 btnIndustrial.setBackgroundResource(R.drawable.circle)
                 btnIndustrial.tag = "false"
+                prefs.edit().putString("tipo_cliente", "").apply()
             }
 
         }
-
-
-        return root
     }
-
     companion object {
         /**
          * Use this factory method to create a new instance of

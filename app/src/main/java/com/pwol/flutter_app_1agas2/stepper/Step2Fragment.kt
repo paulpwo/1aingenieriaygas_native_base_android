@@ -1,5 +1,6 @@
 package com.pwol.flutter_app_1agas2.stepper
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,8 +9,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.EditText
 import androidx.core.widget.doAfterTextChanged
+import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.pwol.flutter_app_1agas2.R
 import com.pwol.flutter_app_1agas2.database.departaments.DepartamentsRepository
 import com.pwol.flutter_app_1agas2.database.departaments.MunicipalitiesRepository
@@ -28,7 +32,17 @@ class Step2Fragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private lateinit var menuAutocompleteDepartamento: AutoCompleteTextView
+    private lateinit var menuAutocompleteMunicipio: AutoCompleteTextView
+    private lateinit var repositoryDepartaments: DepartamentsRepository
+    private lateinit var repositoryMunicipalities: MunicipalitiesRepository
+    private var  names: MutableList<String> = mutableListOf()
+    private lateinit var clearAdapter: ArrayAdapter<String>
+    private lateinit var textContract: EditText
 
+    val prefs by lazy {
+        requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,11 +58,40 @@ class Step2Fragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val root = inflater.inflate(R.layout.step2_fragment, container, false)
-        var names: MutableList<String> = mutableListOf()
-        val clearAdapter = ArrayAdapter(root.context, R.layout.list_item_groups, names)
 
-        val menuAutocompleteDepartamento = root.findViewById(R.id.menuAutocompleteDepartamento) as AutoCompleteTextView
-        val repositoryDepartaments = DepartamentsRepository(application = requireNotNull(this.activity).application)
+        loadData(root)
+        setOnChangeListeners(root)
+
+        return root
+    }
+    fun loadData(root: View) {
+        menuAutocompleteDepartamento = root.findViewById(R.id.menuAutocompleteDepartamento) as AutoCompleteTextView
+        repositoryDepartaments = DepartamentsRepository(application = requireNotNull(this.activity).application)
+        menuAutocompleteMunicipio = root.findViewById(R.id.menuAutocompleteMunicipio) as AutoCompleteTextView
+        repositoryMunicipalities = MunicipalitiesRepository(application = requireNotNull(this.activity).application)
+        clearAdapter = ArrayAdapter(root.context, R.layout.list_item_groups, names)
+        textContract = root.findViewById(R.id.textContract) as EditText
+
+        prefs.getString("contract", "")?.let {
+            textContract.setText(it)
+        }
+        menuAutocompleteDepartamento.setText(prefs.getString("departamento", ""))
+        val search = menuAutocompleteDepartamento.text.toString()
+        repositoryDepartaments.findDepartamentByName(search).observe(viewLifecycleOwner, Observer {
+            repositoryMunicipalities.getMunicipalitiesByDepartamentId(it.id_departamento!!).observe(viewLifecycleOwner, Observer {
+                var names: MutableList<String> = mutableListOf()
+                it.listIterator().forEach {
+                    names.add(it.municipio.toString())
+                }
+                val adapter = ArrayAdapter(root.context, R.layout.list_item_groups, names)
+                menuAutocompleteMunicipio!!.setAdapter(adapter)
+                menuAutocompleteMunicipio!!.setText(prefs.getString("municipio", ""))
+            })
+
+        })
+
+    }
+    fun setOnChangeListeners(root: View){
         repositoryDepartaments.getDepartaments().observe(viewLifecycleOwner, Observer {
             var names: MutableList<String> = mutableListOf()
             it.listIterator().forEach {
@@ -58,10 +101,10 @@ class Step2Fragment : Fragment() {
             menuAutocompleteDepartamento!!.setAdapter(adapter)
         })
 
-        val menuAutocompleteMunicipio = root.findViewById(R.id.menuAutocompleteMunicipio) as AutoCompleteTextView
-        val repositoryMunicipalities = MunicipalitiesRepository(application = requireNotNull(this.activity).application)
+
         menuAutocompleteDepartamento?.doAfterTextChanged {
             val departamento = menuAutocompleteDepartamento.text.toString()
+            prefs.edit().putString("departamento", departamento).apply()
             if(menuAutocompleteDepartamento?.getEditableText().toString().length > 0){
                 menuAutocompleteMunicipio!!.setAdapter(clearAdapter)
                 menuAutocompleteMunicipio!!.setText("")
@@ -77,22 +120,19 @@ class Step2Fragment : Fragment() {
 
                 })
             }
+            //pageViewModel.departamento = departamento
         }
 
 
+        menuAutocompleteMunicipio?.doAfterTextChanged {
+            val municipio = menuAutocompleteMunicipio.text.toString()
+            prefs.edit().putString("municipio", municipio).apply()
+        }
 
-        //val menuAutocompleteMunicipio = root.findViewById(R.id.menuAutocompleteMunicipio) as AutoCompleteTextView
-        //val repository = MunicipalitiesRepository(application = requireNotNull(this.activity).application)
-        //repository.findMunicipalitiesByDepartamentByName("bogota").observe(viewLifecycleOwner, Observer {
-        //
-        //})
+        textContract.doOnTextChanged { text, start, before, count ->
+            prefs.edit().putString("contract", text.toString()).apply()
+        }
 
-
-
-
-
-        //return inflater.inflate(R.layout.step2_fragment, container, false)
-        return root
     }
 
     companion object {

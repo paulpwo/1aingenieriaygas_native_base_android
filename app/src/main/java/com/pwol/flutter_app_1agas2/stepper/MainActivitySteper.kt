@@ -1,5 +1,6 @@
 package com.pwol.flutter_app_1agas2.stepper
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,10 @@ class MainActivitySteper : AppCompatActivity() {
     private lateinit var btnPrev: com.google.android.material.button.MaterialButton
     private lateinit var btnNext: com.google.android.material.button.MaterialButton
     private lateinit var btnFinish: com.google.android.material.button.MaterialButton
+    val prefs by lazy {
+        getSharedPreferences("prefs", Context.MODE_PRIVATE)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -35,6 +40,14 @@ class MainActivitySteper : AppCompatActivity() {
             viewPager.currentItem = viewPager.currentItem + 1
         }
         btnFinish.setOnClickListener {
+            //delete prefs name and lastname and contract
+            prefs.edit().remove("name").apply()
+            prefs.edit().remove("lastname").apply()
+            prefs.edit().remove("direction").apply()
+            prefs.edit().remove("contract").apply()
+            prefs.edit().remove("tipo_cliente").apply()
+            prefs.edit().remove("tipo_servicio").apply()
+            prefs.edit().remove("bookingDateTime").apply()
             finish()
         }
 
@@ -74,7 +87,23 @@ class MainActivitySteper : AppCompatActivity() {
                 }else if (viewPager.currentItem == 5) {
                     btnPrev.setVisibility(View.VISIBLE)
                     btnNext.setVisibility(View.GONE)
-                    btnFinish.setVisibility(View.VISIBLE)
+                    var contrato = prefs.getString("contract", "")
+                    var name = prefs.getString("name", "")
+                    var lastname = prefs.getString("lastname", "")
+                    var direction = prefs.getString("direction", "")
+                    var type_client = prefs.getString("tipo_cliente", "")
+                    var type_revision = prefs.getString("tipo_servicio", "")
+                    var booking = prefs.getString("bookingDateTime", "")
+
+                    if (contrato.isNullOrEmpty() || name.isNullOrEmpty() || lastname.isNullOrEmpty() || direction.isNullOrEmpty() || type_client.isNullOrEmpty() || type_revision.isNullOrEmpty() || booking.isNullOrEmpty()) {
+                        btnPrev.setVisibility(View.VISIBLE)
+                        btnNext.setVisibility(View.GONE)
+                        btnFinish.setVisibility(View.GONE)
+                    } else {
+                        btnPrev.setVisibility(View.VISIBLE)
+                        btnNext.setVisibility(View.GONE)
+                        btnFinish.setVisibility(View.VISIBLE)
+                    }
                 }
 
             }

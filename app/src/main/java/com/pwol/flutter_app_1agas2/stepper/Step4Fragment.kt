@@ -1,5 +1,6 @@
 package com.pwol.flutter_app_1agas2.stepper
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,6 +23,14 @@ class Step4Fragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private lateinit var btnNew: ImageButton
+    private lateinit var btnPeriodica: ImageButton
+
+
+    val prefs by lazy {
+        requireActivity().getSharedPreferences("prefs", Context.MODE_PRIVATE)
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,21 +45,39 @@ class Step4Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.step4_fragment, container, false)
+        loadData(root)
+        setOnChangeTexts()
+        return root
+    }
 
-        val btnNew = root.findViewById(R.id.btnNew) as ImageButton
+    fun loadData(root: View) {
+        btnNew = root.findViewById(R.id.btnNew) as ImageButton
         btnNew.tag = "false"
-        val btnPeriodica = root.findViewById(R.id.btnPeriodica) as ImageButton
+        btnPeriodica = root.findViewById(R.id.btnPeriodica) as ImageButton
         btnPeriodica.tag = "false"
 
+        prefs.getString("tipo_servicio", "nueva")?.let {
+            if (it == "nueva") {
+                btnNew.setBackgroundResource(R.drawable.circle_active)
+                btnNew.tag = "true"
+            } else if (it == "periodica") {
+                btnPeriodica.setBackgroundResource(R.drawable.circle_active)
+                btnPeriodica.tag = "true"
+            }
+        }
 
+    }
+    fun setOnChangeTexts(){
         btnNew.setOnClickListener {
             if(btnNew.tag.toString() == "false") {
                 btnNew.setBackgroundResource(R.drawable.circle_active)
                 btnPeriodica.setBackgroundResource(R.drawable.circle)
                 btnNew.tag = "true"
+                prefs.edit().putString("tipo_servicio", "nueva").apply()
             } else {
                 btnNew.setBackgroundResource(R.drawable.circle)
                 btnNew.tag = "false"
+                prefs.edit().putString("tipo_servicio", "").apply()
             }
 
         }
@@ -59,18 +86,16 @@ class Step4Fragment : Fragment() {
                 btnPeriodica.setBackgroundResource(R.drawable.circle_active)
                 btnNew.setBackgroundResource(R.drawable.circle)
                 btnPeriodica.tag = "true"
+                prefs.edit().putString("tipo_servicio", "periodica").apply()
             } else {
                 btnPeriodica.setBackgroundResource(R.drawable.circle)
                 btnPeriodica.tag = "false"
+                prefs.edit().putString("tipo_servicio", "").apply()
             }
 
         }
 
-
-
-        return root
     }
-
     companion object {
         /**
          * Use this factory method to create a new instance of

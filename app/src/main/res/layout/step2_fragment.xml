@@ -87,7 +87,7 @@
                 android:layout_height="15dp" />
 
             <EditText
-                android:id="@+id/textDirection"
+                android:id="@+id/textContract"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/contrato"
